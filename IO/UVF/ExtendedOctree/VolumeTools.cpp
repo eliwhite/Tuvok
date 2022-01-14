@@ -1,4 +1,5 @@
 #include <cstring>
+#include <random>
 #include <sstream>
 #include <stdexcept>
 #include <algorithm>
@@ -144,7 +145,11 @@ RandomLayout::RandomLayout(UINT64VECTOR3 const& vDomainSize)
   , m_vLookUp((size_t)vDomainSize.volume())
 {
   std::generate(m_vLookUp.begin(), m_vLookUp.end(), UniqueNumber<uint64_t>());
-  std::random_shuffle(m_vLookUp.begin(), m_vLookUp.end());
+  std::random_device rd;
+  std::mt19937 g(rd());
+
+  std::shuffle(m_vLookUp.begin(), m_vLookUp.end(), g);
+//  std::random_shuffle(m_vLookUp.begin(), m_vLookUp.end());
 }
 
 uint64_t RandomLayout::GetLinearIndex(UINT64VECTOR3 const& vSpatialPosition)

@@ -64,8 +64,11 @@ static std::wstring concat(std::wstring a, std::wstring b, std::wstring c) {
 static std::vector<std::wstring> existing(std::vector<std::wstring> directories)
 {
   typedef std::vector<std::wstring> sv;
-  sv::iterator end = std::remove_if(directories.begin(), directories.end(),
-                                    std::not1(std::ptr_fun(exists)));
+
+    std::function<bool(std::wstring s)> lmb_exists = [](std::wstring s){ return exists(s); };
+    sv::iterator end = std::remove_if(directories.begin(), directories.end(),
+                                    std::not1(lmb_exists));
+                                    //std::not1(std::ptr_fun(exists)));
   for(sv::const_iterator e = end; e != directories.end(); ++e) {
     if (!e->empty())
       WARNING("Directory %s does not exist!", SysTools::toNarrow(*e).c_str());
@@ -95,10 +98,12 @@ static std::wstring find_filename(const std::vector<std::wstring>& directories,
   using namespace std::placeholders;
   const std::wstring dirsep = L"/";
   // the functor is a composition: 'exists(add(_1, dirsep, filename))'
+    std::function<bool(std::wstring s)> lmb_exists = [](std::wstring s){ return exists(s); };
+
   sv::const_iterator fn =
     std::find_if(directories.begin(), directories.end(),
                  std::bind(
-                   std::ptr_fun(exists),
+                   lmb_exists,
                    std::bind(concat, _1, dirsep, filename)
                  ));
 

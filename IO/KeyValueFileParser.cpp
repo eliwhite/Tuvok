@@ -218,7 +218,7 @@ const KeyValPair* KeyValueFileParser::GetData(const std::string& strKey,
 
   std::vector<KeyValPair>::const_iterator iter;
   iter = std::find_if(m_vecTokens.begin(), m_vecTokens.end(),
-                      std::bind1st(matching_keys(), key));
+                      std::bind(matching_keys(), key,std::placeholders::_1));
 
   if(iter == m_vecTokens.end()) {
     return NULL;

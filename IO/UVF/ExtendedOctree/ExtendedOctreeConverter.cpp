@@ -1046,7 +1046,8 @@ void ExtendedOctreeConverter::GetBrick(uint8_t* pData, ExtendedOctree &tree,
     return;
   }
 
-  BrickCacheIter cacheEntry = std::find_if(m_vBrickCache.begin(), m_vBrickCache.end(), std::bind2nd(HasIndex(), index));
+//  BrickCacheIter cacheEntry = std::find_if(m_vBrickCache.begin(), m_vBrickCache.end(), std::bind2nd(HasIndex(), index));
+  BrickCacheIter cacheEntry = std::find_if(m_vBrickCache.begin(), m_vBrickCache.end(), std::bind(HasIndex(),std::placeholders::_1, index));
 
   if (cacheEntry == m_vBrickCache.end()) {
     // cache miss
@@ -1100,7 +1101,7 @@ void ExtendedOctreeConverter::SetBrick(uint8_t* pData, ExtendedOctree &tree, uin
     return;
   }
 
-  BrickCacheIter cacheEntry = std::find_if(m_vBrickCache.begin(), m_vBrickCache.end(), std::bind2nd(HasIndex(), index));
+  BrickCacheIter cacheEntry = std::find_if(m_vBrickCache.begin(), m_vBrickCache.end(), std::bind(HasIndex(),std::placeholders::_1, index));
 
   tree.m_vTOC[size_t(index)].m_iLength =
     tree.ComputeBrickSize(tree.IndexToBrickCoords(index)).volume() *
