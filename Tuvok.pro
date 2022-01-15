@@ -21,6 +21,7 @@ DEPENDPATH       += . Basics Controller DebugOut IO Renderer
 INCLUDEPATH      += . 3rdParty/GLEW IO/3rdParty/boost IO/3rdParty/zlib IO/3rdParty/lzma IO/3rdParty/lz4
 INCLUDEPATH      += Basics IO/exception
 QT               += opengl
+#QT += openglwidgets
 QMAKE_LIBDIR     += IO/expressions
 LIBS              = -ltuvokexpr
 unix:LIBS        += -lz -lpthread

@@ -38,7 +38,7 @@ exists($$PRL) {
 SOURCES += \
   ./3rdParty/bzip2/blocksort.c \
   ./3rdParty/bzip2/bzlib.c \
-  ./3rdParty/bzip2/compress.c \
+  ./3rdParty/bzip2/bzcompress.c \
   ./3rdParty/bzip2/crctable.c \
   ./3rdParty/bzip2/decompress.c \
   ./3rdParty/bzip2/huffman.c \
@@ -152,7 +152,6 @@ SOURCES += \
   ./DICOM/DICOMParser.cpp \
   ./DirectoryParser.cpp \
   ./DSFactory.cpp \
-  ./ExternalDataset.cpp \
   ./FileBackedDataset.cpp \
   ./G3D.cpp \
   ./gzio.c \
@@ -189,9 +188,9 @@ SOURCES += \
   ./UVF/Histogram2DDataBlock.cpp \
   ./UVF/KeyValuePairDataBlock.cpp \
   ./UVF/MaxMinDataBlock.cpp \
-  ./UVF/ExtendedOctree/ExtendedOctree.cpp
-  ./UVF/ExtendedOctree/ExtendedOctreeConverter.cpp
-  ./UVF/ExtendedOctree/VolumeTools.cpp
+  ./UVF/ExtendedOctree/ExtendedOctree.cpp \
+  ./UVF/ExtendedOctree/ExtendedOctreeConverter.cpp \
+  ./UVF/ExtendedOctree/VolumeTools.cpp \
   ./uvfMesh.cpp \
   ./UVF/RasterDataBlock.cpp \
   ./UVF/UVF.cpp \
@@ -299,9 +298,9 @@ HEADERS += \
   ./UVF/UVFBasic.h \
   ./UVF/UVF.h \
   ./UVF/UVFTables.h \
-  ./UVF/ExtendedOctree/ExtendedOctree.h
-  ./UVF/ExtendedOctree/ExtendedOctreeConverter.h
-  ./UVF/ExtendedOctree/VolumeTools.h
+  ./UVF/ExtendedOctree/ExtendedOctree.h \
+  ./UVF/ExtendedOctree/ExtendedOctreeConverter.h \
+  ./UVF/ExtendedOctree/VolumeTools.h \
   ./VariantArray.h \
   ./VFFConverter.h \
   ./VGIHeaderParser.h \

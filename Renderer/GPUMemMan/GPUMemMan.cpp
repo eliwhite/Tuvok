@@ -46,7 +46,9 @@
 
 #ifndef TUVOK_NO_QT
 # include <QtGui/QImage>
-# include <QtOpenGL/QGLWidget>
+#include <QOpenGLWidget>
+# include <QtOpenGL>
+//QGLWidget
 #endif
 
 #include "Basics/SystemInfo.h"
